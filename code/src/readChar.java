@@ -19,7 +19,6 @@ public class readChar {
         while((line = br.readLine()) != null){
             text +=  line;
             System.out.println(text);
-            l++;
         }
         return text;
 
