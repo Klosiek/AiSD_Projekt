@@ -2,8 +2,9 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        writeWorkBook.write();
-        readWorkBook.read();
+        analysisOfFile Database = new analysisOfFile();
+
+        System.out.println(Database.amountOfWords());
 
     }
 }
