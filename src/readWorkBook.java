@@ -6,9 +6,9 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.*;
 
 public class readWorkBook {
-    public static void read()throws Exception{
+    public static void read()throws IOException{
 
-        FileInputStream out = new FileInputStream(new File("Database.xlsx"));
+        FileInputStream out = new FileInputStream(new File("Database_stats.xlsx"));
 
         XSSFWorkbook workbook = new XSSFWorkbook(out);
 
@@ -29,9 +29,5 @@ public class readWorkBook {
             }
             System.out.println();
         }
-    }
-
-    public static void main(String[] args)throws Exception {
-        read();
     }
 }
