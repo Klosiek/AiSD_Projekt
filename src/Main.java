@@ -4,7 +4,8 @@ public class Main {
     public static void main(String[] args) throws IOException {
         analysisOfFile Database = new analysisOfFile();
 
-        System.out.println(Database.amountOfCharacters());
+        System.out.println(Database.uniqueWords());
+        System.out.println(Database.uniqueDigits());
 
 
     }
