@@ -71,7 +71,7 @@ public class analysisOfFile {
     public long amountOfInterpunctionSigns(){
         int i = 0;
         int l = 0;
-        String punctuations = ".,:;";
+        String punctuations = ".,:;?!";
 
         while(i < this.text.length()){
             if(punctuations.contains(Character.toString(this.text.charAt(i)))) l++;
@@ -86,6 +86,25 @@ public class analysisOfFile {
         while(i < this.text.length()){
             if(Character.isDigit(this.text.charAt(i))) l++;
             i++;
+        }
+        return l;
+    }
+    public long amountOfSentences() {
+        long l = 0;
+        int i = 0;
+        String punctuations = ".?!";
+
+        while (i < this.text.length()) {
+            if(Character.isUpperCase(this.text.charAt(i))){
+                i++;
+                while(!punctuations.contains(Character.toString(this.text.charAt(i)))){
+                    i++;
+                }
+                l++;
+                i++;
+
+            }else
+                i++;
         }
         return l;
     }
