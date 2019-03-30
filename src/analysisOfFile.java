@@ -113,22 +113,26 @@ public class analysisOfFile {
 
         int i = 0;
         String word = "";
+
         ArrayList<String> words = new ArrayList<>();
         while (i < this.text.length()) {
-            if(Character.isWhitespace(this.text.charAt(i))){
-                words.add(word);
-                word = "";
-            }else {
-                word = word + Character.toString(text.charAt(i));
+            if(Character.isAlphabetic(this.text.charAt(i))){
+                word= word+ text.charAt(i);
+            }else if(word!="") {
 
+                    words.add(word);
+
+                word = "";
             }
 
             i++;
         }
         words = new ArrayList<>(new LinkedHashSet<>(words));
 
-            return words;
-        }
+        return words;
+    }
+
+
         public ArrayList<String> uniqueDigits(){
         int i = 0;
         ArrayList<String> numbers = new ArrayList<>();
@@ -142,8 +146,9 @@ public class analysisOfFile {
 
 
         }
-            numbers = new ArrayList<String>(new LinkedHashSet<>(numbers));
+            numbers = new ArrayList<>(new LinkedHashSet<>(numbers));
             return numbers;
         }
 
 }
+

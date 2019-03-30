@@ -5,7 +5,7 @@ public class Main {
         analysisOfFile Database = new analysisOfFile();
 
         System.out.println(Database.uniqueWords());
-        System.out.println(Database.uniqueDigits());
+       System.out.println(Database.uniqueDigits());
 
 
     }
