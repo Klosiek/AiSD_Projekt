@@ -2,7 +2,8 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
 public class analysisOfFile {
     public analysisOfFile() throws IOException {}
 
@@ -89,4 +90,41 @@ public class analysisOfFile {
         }
         return l;
     }
+    public ArrayList<String> uniqueWords() {
+
+        int i = 0;
+        String word = "";
+        ArrayList<String> words = new ArrayList<>();
+        while (i < this.text.length()) {
+            if(Character.isWhitespace(this.text.charAt(i))){
+                words.add(word);
+                word = "";
+            }else {
+                word = word + Character.toString(text.charAt(i));
+
+            }
+
+            i++;
+        }
+        words = new ArrayList<>(new LinkedHashSet<>(words));
+
+            return words;
+        }
+        public ArrayList<String> uniqueDigits(){
+        int i = 0;
+        ArrayList<String> numbers = new ArrayList<>();
+        while (i<this.text.length()){
+            if(Character.isDigit(this.text.charAt(i))){
+                numbers.add(Character.toString(this.text.charAt(i)));
+                i++;
+            }else{
+                i++;
+            }
+
+
+        }
+            numbers = new ArrayList<String>(new LinkedHashSet<>(numbers));
+            return numbers;
+        }
+
 }
