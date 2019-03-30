@@ -9,16 +9,15 @@ public class analysisOfFile {
     private final String text = readFile();
 
     private String readFile() throws IOException {
-        String nameOfFile = "C:/Users/Klosiek/Desktop/AiSD_Projekt/Database.txt";
-        File file = new File(nameOfFile);
+//        String nameOfFile = "../Database.txt";
+        File file = new File("./Database.txt");
 
         BufferedReader buffer = new BufferedReader(new FileReader(file));
 
         String line, text = "";
-        int i = 0;
 
         while((line = buffer.readLine()) != null){
-            text += line;
+            text += line + "\n";
         }
         return text;
     }
@@ -26,7 +25,7 @@ public class analysisOfFile {
         long l = 0;
         int i =0;
         while(i < this.text.length()){
-            if(!Character.isWhitespace(this.text.charAt(i))) l++;
+            if(!Character.isWhitespace(this.text.charAt(i)) && this.text.charAt(i) != '\n') l++;
             i++;
         }
 
@@ -41,9 +40,15 @@ public class analysisOfFile {
         }
         return l;
     }
-    public long amountOfLines(){ // CHUJ WIE NIC NIE DZIALA
-        String[] lines = this.text.split("\r\n|\r|\n, -1");
-        return lines.length;
+    public long amountOfLines(){
+        long l = 0;
+        int i = 0;
+        while(i < this.text.length()){
+            if(this.text.charAt(i) == '\n') l++;
+            i++;
+        }
+        return l;
+
     }
     public long amountOfUpperCase(){
         long l = 0;
@@ -80,17 +85,6 @@ public class analysisOfFile {
 
         while(i < this.text.length()){
             if(Character.isDigit(this.text.charAt(i))) l++;
-            i++;
-        }
-        return l;
-    }
-    public long amountOfWords(){ // NA POZNIEJ
-        long l = 0;
-        int i = 0;
-        String words = ".,:; ";
-        String ignore = ", ";
-        while(i < this.text.length()){
-                if(words.contains(Character.toString(this.text.charAt(i)))) l++;
             i++;
         }
         return l;
