@@ -132,11 +132,12 @@ public class analysisOfFile {
 
         int i = 0;
         String word = "";
+        String polishChars = "¹æê³ñóœŸ¿¥ÆÊ£ÑÓŒ¯";
 
         ArrayList<String> words = new ArrayList<>();
         while (i < this.text.length()) {
-            if(Character.isAlphabetic(this.text.charAt(i))){
-                word= word+ text.charAt(i);
+            if(Character.isAlphabetic(this.text.charAt(i)) || polishChars.contains(Character.toString(this.text.charAt(i)))){
+                word += text.charAt(i);
             }else if(word!="") {
 
                     words.add(word);

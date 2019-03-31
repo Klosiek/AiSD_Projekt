@@ -2,8 +2,10 @@ import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.ss.util.CellRangeAddress;
 import org.apache.poi.xssf.usermodel.*;
 
+import javax.xml.crypto.Data;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -20,7 +22,10 @@ public class Main {
         zolte.setAlignment(HorizontalAlignment.CENTER);
         sheet.addMergedRegion(new CellRangeAddress(0,0,0,3));
 
-        for(int row = 0; row < 10 ; row++) {
+        ArrayList<String> words = Database.uniqueWords();
+        ArrayList<String> digits = Database.uniqueDigits();
+
+        for(int row = 0; row < ((words.size()>digits.size()?words.size():digits.size())>10?(words.size()>digits.size()?words.size():digits.size()):10); row++) {
             sheet.createRow(row);
             for(int column = 0; column < 4; column++) {
                 sheet.getRow(row).createCell(column);
@@ -49,6 +54,21 @@ public class Main {
         sheet.getRow(7).getCell(1).setCellValue(Database.amountOfDigitals());
         sheet.getRow(8).getCell(1).setCellValue(Database.amountOfWords());
         sheet.getRow(9).getCell(1).setCellValue(Database.amountOfSentences());
+
+        sheet.getRow(1).getCell(2).setCellValue("S³owa bez powtórzeñ");
+        sheet.getRow(1).getCell(3).setCellValue("Cyfry bez powtórzeñ");
+        sheet.autoSizeColumn(2);
+        sheet.autoSizeColumn(3);
+
+
+        for (int i = 2; i < words.size(); i++) {
+            sheet.getRow(i).getCell(2).setCellValue(words.get(i-2));
+        }
+
+        for (int i = 2; i < digits.size(); i++) {
+            sheet.getRow(i).getCell(3).setCellValue(digits.get(i-2));
+        }
+
 
 
 //        XSSFRow row1 = sheet.createRow(0);
