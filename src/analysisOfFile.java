@@ -1,4 +1,5 @@
 import java.io.*;
+
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 
@@ -11,8 +12,7 @@ public class analysisOfFile {
 //        String nameOfFile = "../Database.txt";
         File file = new File("./Database.txt");
 
-        BufferedReader buffer = new BufferedReader( new InputStreamReader(
-                new FileInputStream(file), "UTF-8"));
+        BufferedReader buffer = new BufferedReader(new InputStreamReader(new FileInputStream(file), "windows-1250"));
 
         String line, text = "";
 
@@ -151,7 +151,7 @@ public class analysisOfFile {
     }
 
 
-        public ArrayList<String> uniqueDigits(){
+        public ArrayList<Integer> uniqueDigits(){
         int i = 0;
         ArrayList<String> numbers = new ArrayList<>();
         while (i<this.text.length()){
@@ -164,8 +164,14 @@ public class analysisOfFile {
 
 
         }
-            numbers = new ArrayList<>(new LinkedHashSet<>(numbers));
-            return numbers;
+        numbers = new ArrayList<>(new LinkedHashSet<>(numbers));
+
+        ArrayList<Integer> digits = new ArrayList<>();
+
+         for(int j = 0; j < numbers.size(); j++) {
+            digits.add(Integer.parseInt(numbers.get(j)));
+        }
+            return digits;
         }
 
 }
