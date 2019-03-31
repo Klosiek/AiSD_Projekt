@@ -91,6 +91,21 @@ public class analysisOfFile {
         }
         return l;
     }
+    public long amountOfWords(){
+        long l = 0;
+        int i = 0;
+        while (i < this.text.length()) {
+            while(Character.isAlphabetic(this.text.charAt(i))){
+                i++;
+                if(!Character.isAlphabetic(this.text.charAt(i))){
+                    l++;
+                }
+            }
+            i++;
+
+        }
+        return l;
+    }
     public long amountOfSentences() {
         long l = 0;
         int i = 0;
@@ -99,14 +114,17 @@ public class analysisOfFile {
         while (i < this.text.length()) {
             if(Character.isUpperCase(this.text.charAt(i))){
                 i++;
-                while(!punctuations.contains(Character.toString(this.text.charAt(i)))){
+                while(!punctuations.contains(Character.toString(this.text.charAt(i))) && i < this.text.length() - 1){
                     i++;
+                    if( i == this.text.length() - 1) l --;
+
                 }
                 l++;
                 i++;
 
             }else
                 i++;
+
         }
         return l;
     }
