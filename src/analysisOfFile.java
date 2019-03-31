@@ -1,7 +1,4 @@
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 
@@ -14,7 +11,8 @@ public class analysisOfFile {
 //        String nameOfFile = "../Database.txt";
         File file = new File("./Database.txt");
 
-        BufferedReader buffer = new BufferedReader(new FileReader(file));
+        BufferedReader buffer = new BufferedReader( new InputStreamReader(
+                new FileInputStream(file), "UTF-8"));
 
         String line, text = "";
 
