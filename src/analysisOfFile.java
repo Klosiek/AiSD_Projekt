@@ -153,7 +153,7 @@ public class analysisOfFile {
     }
 
 
-        public ArrayList<String> uniqueDigits(){
+        public ArrayList<Integer> uniqueDigits(){
         int i = 0;
         ArrayList<String> numbers = new ArrayList<>();
         while (i<this.text.length()){
@@ -166,8 +166,14 @@ public class analysisOfFile {
 
 
         }
-            numbers = new ArrayList<>(new LinkedHashSet<>(numbers));
-            return numbers;
+        numbers = new ArrayList<>(new LinkedHashSet<>(numbers));
+
+        ArrayList<Integer> digits = new ArrayList<>();
+
+         for(int j = 0; j < numbers.size(); j++) {
+            digits.add(Integer.parseInt(numbers.get(j)));
+        }
+            return digits;
         }
 
 }

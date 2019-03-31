@@ -23,9 +23,9 @@ public class Main {
         sheet.addMergedRegion(new CellRangeAddress(0,0,0,3));
 
         ArrayList<String> words = Database.uniqueWords();
-        ArrayList<String> digits = Database.uniqueDigits();
+        ArrayList<Integer> digits = Database.uniqueDigits();
 
-        for(int row = 0; row < ((words.size()>digits.size()?words.size():digits.size())>10?(words.size()>digits.size()?words.size():digits.size()):10); row++) {
+        for(int row = 0; row < ((words.size()>digits.size()?words.size():digits.size())>10?(words.size()>digits.size()?words.size():digits.size()):10) + 2; row++) {
             sheet.createRow(row);
             for(int column = 0; column < 4; column++) {
                 sheet.getRow(row).createCell(column);
@@ -61,15 +61,13 @@ public class Main {
         sheet.autoSizeColumn(3);
 
 
-        for (int i = 2; i < words.size(); i++) {
-            sheet.getRow(i).getCell(2).setCellValue(words.get(i-2));
+        for (int i = 0; i < words.size(); i++) {
+            sheet.getRow(i + 2).getCell(2).setCellValue(words.get(i));
         }
 
-        for (int i = 2; i < digits.size(); i++) {
-            sheet.getRow(i).getCell(3).setCellValue(digits.get(i-2));
+        for (int i = 0; i < digits.size(); i++) {
+            sheet.getRow(i + 2).getCell(3).setCellValue(digits.get(i));
         }
-
-
 
 //        XSSFRow row1 = sheet.createRow(0);
 //        XSSFCell cell1 = row1.createCell(0);
