@@ -38,7 +38,7 @@ public class analysisOfFile {
             if(Character.isWhitespace(this.text.charAt(i))) l++;
             i++;
         }
-        return l;
+        return l-1;
     }
     public long amountOfLines(){
         long l = 0;
@@ -48,7 +48,6 @@ public class analysisOfFile {
             i++;
         }
         return l;
-
     }
     public long amountOfUpperCase(){
         long l = 0;
